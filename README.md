@@ -1,46 +1,76 @@
-# Getting Started with Create React App
+# Components List
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+## App
 
-## Available Scripts
+    Recibe: el token del usuario
 
-In the project directory, you can run:
+    Muestra: Register componente
+    Login componente o botón logout
+    Lista usuarios solo si está logado
 
-### `npm start`
+    Estado: logado o no logado
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+    Acción: Guarda/setea en local storage el token.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## LOGIN
 
-### `npm test`
+    Recibe: nada
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    Muestra: un formulario con un botón para login.
 
-### `npm run build`
+    Estado: ir actualizando los datos que va introduciendo usuario y si todo ha ido bien, redirigir al perfil de usuario.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    Acción: al clickar el usuario, enviar el formulario y los datos del usuario logado al store.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## REGISTER
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    Recibe: nada
 
-### `npm run eject`
+    Muestra: un formulario de registro con campos userName y Password y un botón registrarse
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+    Estado propio: ir actualizando los datos que va introduciendo usuario y al final volver al estado inicial.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    Acción: al clickar, enviar formulario de registro
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## USERS LIST
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+    Recibe props: lista de usuarios a renderizar
 
-## Learn More
+    Muestra: tantas cards como usuarios reciba
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    Estado: listado muestra todos o solo amigos o enemigos
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    Acción: al clickar en todos, amigos o enemigos, renderiza en función del estado
+
+## USER CARD
+
+    Recibe: por props el user a imprimir y si es amigo o enemigo del usuario
+
+    Muestra: un user con su foto y nombre y un botón para cambiar el tipo de relación y un botón para ir a galeria.
+
+    Estado: nada
+
+    Acción: nada
+
+## EDIT PROFILE
+
+    Recibe del store: info usuario login
+
+    Muestra: formulario con input:
+    Añadir foto
+    editar userName
+    un botón con su texto: edit perfil
+
+    Estado: Inputs de cada usuario
+
+    Acción: acción submit
+
+## BUTTON
+
+    Recibe: por props el texto y la acción a realizar
+
+    Muestra: un botón con su texto
+
+    Estado: nada
+
+    Acción: acción recibida
