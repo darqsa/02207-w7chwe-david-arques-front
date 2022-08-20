@@ -5,21 +5,21 @@ import { RootState } from "../../app/store";
 import { ProtoUser } from "../models/User";
 import { loadUsersActionCreator } from "../slices/usersSlice";
 
+const apiUrl = process.env.REACT_APP_USERS_API_URL;
+
 const useApi = () => {
-  // const url = process.env.API_URL as string;
-  const url = "http://localhost:7452/";
   const dispatch = useDispatch();
   const users = useSelector((state: RootState) => state.users);
 
   const getUsers = useCallback(async () => {
-    const response = await fetch(`${url}users`);
+    const response = await fetch(`${apiUrl}users`);
     const { users }: { users: ProtoUser[] } = await response.json();
 
     dispatch<PayloadAction<ProtoUser[]>>(loadUsersActionCreator(users));
-  }, [dispatch, url]);
+  }, [dispatch]);
 
   const registerUser = async (userData: ProtoUser) => {
-    await fetch(`${url}users/register`, {
+    await fetch(`${apiUrl}users/register`, {
       method: "POST",
       body: JSON.stringify(userData),
       headers: {
