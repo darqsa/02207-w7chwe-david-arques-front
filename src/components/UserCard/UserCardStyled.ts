@@ -5,7 +5,7 @@ const UserContainerStyled = styled.div`
   flex-direction: column;
   width: 150px;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   background-color: #a5c9ca;
   padding: 30px 20px;
   border-radius: 20px;
@@ -35,10 +35,10 @@ const UserContainerStyled = styled.div`
       top: 0px;
       border-radius: 50%;
       opacity: 0;
-      background-color: #2c333370;
       transition: 0.15s;
       &:hover {
         opacity: 100;
+        background-color: #2c333370;
       }
     }
     &__button {
@@ -52,6 +52,7 @@ const UserContainerStyled = styled.div`
     &__name {
       font-weight: bold;
       color: #3a3b3c;
+      font-size: 1.4em;
       transition: 0.1s;
       &:hover {
         color: #e7f6f2;
