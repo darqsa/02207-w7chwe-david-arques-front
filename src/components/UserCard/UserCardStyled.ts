@@ -8,8 +8,9 @@ const UserContainerStyled = styled.div`
   gap: 10px;
   background-color: #a5c9ca;
   padding: 30px 20px;
-  border-radius: 20px;
+  border-radius: 10px;
   margin: 20px;
+  border: 1px solid #3a3b3c20;
   .user-container {
     &__image-container {
       border-radius: 50%;
@@ -20,7 +21,10 @@ const UserContainerStyled = styled.div`
       position: relative;
 
       &--friend {
-        border: 6px solid green;
+        border: 6px solid #5bb318;
+      }
+      &--friend {
+        border: 6px solid #d61c4e;
       }
     }
     &__button-container {
@@ -46,7 +50,7 @@ const UserContainerStyled = styled.div`
     }
     &__image {
       width: 100%;
-      height: 100%;
+      height: 100;
       object-fit: cover;
     }
     &__name {

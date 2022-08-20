@@ -6,6 +6,8 @@ const UserListContainerStyled = styled.div`
       list-style: none;
       display: flex;
       flex-wrap: wrap;
+      padding: 0;
+      justify-content: center;
     }
   }
 `;
