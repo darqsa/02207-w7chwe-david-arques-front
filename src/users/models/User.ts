@@ -1,6 +1,10 @@
-export interface User {
+export interface ProtoUser {
   id: string;
   username: string;
   image: string;
-  status: "friend" | "enemy" | "none";
+}
+
+export interface User extends ProtoUser {
+  friends: string[];
+  enemies: string[];
 }
