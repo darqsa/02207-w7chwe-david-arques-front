@@ -16,8 +16,22 @@ const UserCard = ({ user }: UserCardProps): JSX.Element => {
           height={150}
         />
         <div className="user-container__button-container">
-          <Button className="user-container__button">Friend</Button>
-          <Button className="user-container__button">Make enemy</Button>
+          <Button
+            variant="contained"
+            color="success"
+            size="small"
+            className="user-container__button"
+          >
+            Friend
+          </Button>
+          <Button
+            variant="contained"
+            size="small"
+            color="warning"
+            className="user-container__button"
+          >
+            Make enemy
+          </Button>
         </div>
       </div>
       <span className="user-container__name">{user.username}</span>

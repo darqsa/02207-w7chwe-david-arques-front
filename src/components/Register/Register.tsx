@@ -1,6 +1,7 @@
 import { Button, TextField } from "@mui/material";
 import { SyntheticEvent, useState } from "react";
 import useApi from "../../users/hooks/useApi";
+import { FormStyled } from "./RegisterStyled";
 
 const Register = (): JSX.Element => {
   const initialState = {
@@ -31,11 +32,11 @@ const Register = (): JSX.Element => {
   const hasEmptyFields =
     formData.username.length < 5 || formData.password.length < 5;
   return (
-    <form onSubmit={onSubmitData} className="register-container__form">
-      <h2 className="register-container__heading">Create your account:</h2>
+    <FormStyled onSubmit={onSubmitData} className="form">
+      <h2 className="form__heading">Create your account:</h2>
       <TextField
         id="username"
-        className="register-container__form-input"
+        className="form__input"
         label="Username"
         variant="outlined"
         autoComplete="off"
@@ -46,7 +47,7 @@ const Register = (): JSX.Element => {
       />
       <TextField
         id="password"
-        className="register-container__form-input"
+        className="form__input"
         label="Password"
         variant="outlined"
         type="password"
@@ -58,7 +59,7 @@ const Register = (): JSX.Element => {
       />
       <TextField
         id="image"
-        className="register-container__form-input"
+        className="form__input"
         label="Profile picture"
         variant="outlined"
         type="outlined"
@@ -69,7 +70,7 @@ const Register = (): JSX.Element => {
       <Button variant="contained" type="submit" disabled={hasEmptyFields}>
         Register
       </Button>
-    </form>
+    </FormStyled>
   );
 };
 export default Register;

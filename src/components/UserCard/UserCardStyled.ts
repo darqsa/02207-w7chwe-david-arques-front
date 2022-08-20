@@ -5,19 +5,16 @@ const UserContainerStyled = styled.div`
   flex-direction: column;
   width: 150px;
   align-items: center;
-  gap: 10px;
-  background-color: #a5c9ca;
-  padding: 30px 20px;
-  border-radius: 10px;
+
+  padding: 15px 5px;
   margin: 20px;
-  border: 1px solid #3a3b3c20;
   .user-container {
     &__image-container {
       border-radius: 50%;
       overflow: hidden;
       width: 150px;
       height: 150px;
-      border: 6px solid grey;
+      border: 6px solid #6c757d;
       position: relative;
 
       &--friend {
@@ -40,6 +37,7 @@ const UserContainerStyled = styled.div`
       border-radius: 50%;
       opacity: 0;
       transition: 0.15s;
+      gap: 5px;
       &:hover {
         opacity: 100;
         background-color: #2c333370;
@@ -47,6 +45,7 @@ const UserContainerStyled = styled.div`
     }
     &__button {
       cursor: pointer;
+      width: 125px;
     }
     &__image {
       width: 100%;
@@ -55,11 +54,11 @@ const UserContainerStyled = styled.div`
     }
     &__name {
       font-weight: bold;
-      color: #3a3b3c;
+      color: #343a40;
       font-size: 1.4em;
       transition: 0.1s;
       &:hover {
-        color: #e7f6f2;
+        color: #6c757d;
         cursor: pointer;
       }
     }
