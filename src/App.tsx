@@ -1,10 +1,10 @@
-import UserCard from "./components/UserCard/UserCard";
+import UserList from "./components/UserList/UsersList";
 
 function App() {
   return (
     <>
       <h1>🤣🤣👌😎</h1>
-      <UserCard />
+      <UserList />
     </>
   );
 }
