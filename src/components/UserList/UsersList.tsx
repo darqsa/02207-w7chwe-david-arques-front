@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import useApi from "../../users/hooks/useApi";
 import UserCard from "../UserCard/UserCard";
+import { UserListContainerStyled } from "./UserListStyled";
 
 const UserList = (): JSX.Element => {
   const { users, getUsers } = useApi();
@@ -10,7 +11,7 @@ const UserList = (): JSX.Element => {
   }, [getUsers]);
 
   return (
-    <div className="user-list-container">
+    <UserListContainerStyled className="user-list-container">
       <h2 className="user-list-container__heading">👤Current Users:</h2>
       <ul className="user-list-container__user-list">
         {users.map((user) => (
@@ -19,7 +20,7 @@ const UserList = (): JSX.Element => {
           </li>
         ))}
       </ul>
-    </div>
+    </UserListContainerStyled>
   );
 };
 export default UserList;
