@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import { ProtoUser } from "../../users/models/User";
 import { UserContainerStyled } from "./UserCardStyled";
 
@@ -15,8 +16,8 @@ const UserCard = ({ user }: UserCardProps): JSX.Element => {
           height={150}
         />
         <div className="user-container__button-container">
-          <button className="user-container__button">Friend</button>
-          <button className="user-container__button">Make enemy</button>
+          <Button className="user-container__button">Friend</Button>
+          <Button className="user-container__button">Make enemy</Button>
         </div>
       </div>
       <span className="user-container__name">{user.username}</span>
