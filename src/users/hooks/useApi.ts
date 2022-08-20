@@ -18,6 +18,16 @@ const useApi = () => {
     dispatch<PayloadAction<ProtoUser[]>>(loadUsersActionCreator(users));
   }, [dispatch, url]);
 
-  return { users, getUsers };
+  const registerUser = async (userData: ProtoUser) => {
+    await fetch(`${url}users/register`, {
+      method: "POST",
+      body: JSON.stringify(userData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  };
+
+  return { users, getUsers, registerUser };
 };
 export default useApi;
