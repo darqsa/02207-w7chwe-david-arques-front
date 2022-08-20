@@ -1,5 +1,5 @@
 export interface ProtoUser {
-  id: string;
+  id?: string;
   username: string;
   image: string;
 }
