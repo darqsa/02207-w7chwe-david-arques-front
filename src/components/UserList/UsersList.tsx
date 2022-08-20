@@ -15,7 +15,7 @@ const UserList = (): JSX.Element => {
       <ul className="user-list-container__user-list">
         {users.map((user) => (
           <li className="user-list-container__list-item">
-            <UserCard />
+            <UserCard user={user} />
           </li>
         ))}
       </ul>
