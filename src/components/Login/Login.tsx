@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import useApi from "../../users/hooks/useApi";
 import Register from "../Register/Register";
-import { FormStyled } from "./LoginStyled";
+import { FormStyled, LoginContainerStyled } from "./LoginStyled";
 
 const Login = (): JSX.Element => {
   const initialState = {
@@ -74,12 +74,19 @@ const Login = (): JSX.Element => {
     );
   } else {
     return (
-      <>
-        <span className="form__heading">Logged as {userState.username}</span>
-        <Button variant="text" type="submit" onClick={onLogOut}>
+      <LoginContainerStyled className="logged-container">
+        <span className="logged-container__text">
+          Logged as <strong>{userState.username}</strong>
+        </span>
+        <Button
+          className="logged-container__button"
+          variant="outlined"
+          type="submit"
+          onClick={onLogOut}
+        >
           Logout
         </Button>
-      </>
+      </LoginContainerStyled>
     );
   }
 };

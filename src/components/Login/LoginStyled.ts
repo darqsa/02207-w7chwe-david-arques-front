@@ -24,4 +24,30 @@ const FormStyled = styled.form`
   }
 `;
 
-export { FormStyled };
+const LoginContainerStyled = styled.div`
+  width: 200px;
+  gap: 20px;
+  background-color: #dee2e6;
+  padding: 40px 20px;
+  height: auto;
+  border-radius: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+  .logged-container {
+    &__text {
+      font-size: 1.4em;
+    }
+    &__button {
+      width: 50%;
+      color: grey;
+      border: 1px solid grey;
+      &:hover {
+        border: 1px solid black;
+      }
+    }
+  }
+`;
+
+export { FormStyled, LoginContainerStyled };
