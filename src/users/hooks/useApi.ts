@@ -2,7 +2,9 @@ import { PayloadAction } from "@reduxjs/toolkit";
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../app/store";
-import { ProtoUser } from "../models/User";
+import { fetchToken } from "../../utils/auth";
+import { ProtoUser, User } from "../models/User";
+import { loginUserActionCreator } from "../slices/loginUserSlice";
 import { loadUsersActionCreator } from "../slices/usersSlice";
 
 const apiUrl = process.env.REACT_APP_USERS_API_URL;
@@ -18,6 +20,24 @@ const useApi = () => {
     dispatch<PayloadAction<ProtoUser[]>>(loadUsersActionCreator(users));
   }, [dispatch]);
 
+  const loginUser = async (userData: ProtoUser) => {
+    const data = await fetch(`${apiUrl}users/login`, {
+      method: "POST",
+      body: JSON.stringify(userData),
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+
+    const {
+      user: { token },
+    } = await data.json();
+    const user = fetchToken(token);
+
+    dispatch<PayloadAction<User>>(loginUserActionCreator(user));
+    localStorage.setItem("token", user.token);
+  };
+
   const registerUser = async (userData: ProtoUser) => {
     await fetch(`${apiUrl}users/register`, {
       method: "POST",
@@ -28,6 +48,6 @@ const useApi = () => {
     });
   };
 
-  return { users, getUsers, registerUser };
+  return { users, getUsers, registerUser, loginUser };
 };
 export default useApi;
