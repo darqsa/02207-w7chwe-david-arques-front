@@ -23,7 +23,7 @@ const useApi = () => {
     dispatch<PayloadAction<ProtoUser[]>>(loadUsersActionCreator(users));
   }, [dispatch]);
 
-  const loginUser = async (userData: ProtoUser) => {
+  const loginUser = async (userData: User) => {
     const data = await fetch(`${apiUrl}users/login`, {
       method: "POST",
       body: JSON.stringify(userData),
@@ -32,9 +32,7 @@ const useApi = () => {
       },
     });
 
-    const {
-      user: { token },
-    } = await data.json();
+    const { token } = await data.json();
     const user = fetchToken(token);
 
     dispatch<PayloadAction<User>>(loginUserActionCreator(user));
