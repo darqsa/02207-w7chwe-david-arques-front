@@ -5,7 +5,7 @@ export interface ProtoUser {
 }
 
 export interface User {
-  id: string;
+  id?: string;
   username: string;
   token: string;
 }
