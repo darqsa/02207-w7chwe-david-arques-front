@@ -1,18 +1,16 @@
 import { configureStore, createReducer } from "@reduxjs/toolkit";
-import { User } from "../users/models/User";
+import { ProtoUser } from "../users/models/User";
 
-const initialState: User[] = [
+const initialState: ProtoUser[] = [
   {
-    enemies: [],
-    friends: [],
     image: "",
     username: "",
     id: "",
   },
 ];
 
-const mockReducer = createReducer<User[]>(initialState, (builder) => {
-  builder.addDefaultCase((state: User[]) => [...state]);
+const mockReducer = createReducer<ProtoUser[]>(initialState, (builder) => {
+  builder.addDefaultCase((state: ProtoUser[]) => [...state]);
 });
 
 const mockStore = configureStore({ reducer: { users: mockReducer } });

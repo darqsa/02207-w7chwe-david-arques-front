@@ -4,7 +4,8 @@ export interface ProtoUser {
   image: string;
 }
 
-export interface User extends ProtoUser {
-  friends: string[];
-  enemies: string[];
+export interface User {
+  id: string;
+  username: string;
+  token: string;
 }
