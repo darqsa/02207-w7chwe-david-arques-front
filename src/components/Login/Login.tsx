@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import useApi from "../../users/hooks/useApi";
 import Register from "../Register/Register";
+import { FormStyled } from "./LoginStyled";
 
 const Login = (): JSX.Element => {
   const initialState = {
@@ -42,31 +43,33 @@ const Login = (): JSX.Element => {
     return (
       <>
         {!isUserLogged && <Register />}
-        <form onSubmit={onSubmitData} className="form">
+        <FormStyled onSubmit={onSubmitData} className="form">
           <h2 className="form__heading">Login:</h2>
-          <TextField
-            name="username"
-            className="form__input"
-            label="Username"
-            variant="standard"
-            autoComplete="off"
-            onChange={onChangeData}
-            value={loginData.username}
-          />
-          <TextField
-            name="password"
-            className="form__input"
-            label="Password"
-            variant="standard"
-            type="password"
-            autoComplete="off"
-            onChange={onChangeData}
-            value={loginData.password}
-          />
-          <Button variant="text" type="submit" disabled={hasEmptyFields}>
+          <div className="form__input-container">
+            <TextField
+              name="username"
+              className="form__input"
+              label="Username"
+              variant="standard"
+              autoComplete="off"
+              onChange={onChangeData}
+              value={loginData.username}
+            />
+            <TextField
+              name="password"
+              className="form__input"
+              label="Password"
+              variant="standard"
+              type="password"
+              autoComplete="off"
+              onChange={onChangeData}
+              value={loginData.password}
+            />
+          </div>
+          <Button variant="contained" type="submit" disabled={hasEmptyFields}>
             Login
           </Button>
-        </form>
+        </FormStyled>
       </>
     );
   } else {
