@@ -4,7 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import { fetchToken } from "../../utils/auth";
 import { ProtoUser, User } from "../models/User";
-import { loginUserActionCreator } from "../slices/loginUserSlice";
+import {
+  loginUserActionCreator,
+  logoutUserActionCreator,
+} from "../slices/loginUserSlice";
 import { loadUsersActionCreator } from "../slices/usersSlice";
 
 const apiUrl = process.env.REACT_APP_USERS_API_URL;
@@ -38,6 +41,11 @@ const useApi = () => {
     localStorage.setItem("token", user.token);
   };
 
+  const logoutUser = () => {
+    dispatch<PayloadAction>(logoutUserActionCreator());
+    localStorage.removeItem("token");
+  };
+
   const registerUser = async (userData: ProtoUser) => {
     await fetch(`${apiUrl}users/register`, {
       method: "POST",
@@ -48,6 +56,6 @@ const useApi = () => {
     });
   };
 
-  return { users, getUsers, registerUser, loginUser };
+  return { users, getUsers, registerUser, loginUser, logoutUser };
 };
 export default useApi;
