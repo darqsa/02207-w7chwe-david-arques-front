@@ -3,6 +3,8 @@ import { SyntheticEvent, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import useApi from "../../users/hooks/useApi";
+import Register from "../Register/Register";
+import { FormStyled, LoginContainerStyled } from "./LoginStyled";
 
 const Login = (): JSX.Element => {
   const initialState = {
@@ -10,6 +12,7 @@ const Login = (): JSX.Element => {
     password: "",
     token: "",
   };
+  let isUserLogged = false;
 
   const { loginUser, logoutUser } = useApi();
 
@@ -19,13 +22,10 @@ const Login = (): JSX.Element => {
 
   const onSubmitData = async (event: SyntheticEvent) => {
     event.preventDefault();
-    try {
-      loginUser(loginData);
-    } catch (error) {
-      console.log(error);
-    }
-
     setLoginData(initialState);
+
+    isUserLogged = !isUserLogged;
+    loginUser(loginData);
   };
 
   const onLogOut = () => {
@@ -33,7 +33,7 @@ const Login = (): JSX.Element => {
   };
 
   const onChangeData = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setLoginData({ ...loginData, [event.target.id]: event.target.value });
+    setLoginData({ ...loginData, [event.target.name]: event.target.value });
   };
 
   const hasEmptyFields =
@@ -41,40 +41,52 @@ const Login = (): JSX.Element => {
 
   if (!userState.id) {
     return (
-      <form onSubmit={onSubmitData} className="form">
-        <h2 className="form__heading">Login:</h2>
-        <TextField
-          id="username"
-          className="form__input"
-          label="Username"
-          variant="standard"
-          autoComplete="off"
-          onChange={onChangeData}
-          value={loginData.username}
-        />
-        <TextField
-          id="password"
-          className="form__input"
-          label="Password"
-          variant="standard"
-          type="password"
-          autoComplete="off"
-          onChange={onChangeData}
-          value={loginData.password}
-        />
-        <Button variant="text" type="submit" disabled={hasEmptyFields}>
-          Login
-        </Button>
-      </form>
+      <>
+        {!isUserLogged && <Register />}
+        <FormStyled onSubmit={onSubmitData} className="form">
+          <h2 className="form__heading">Login:</h2>
+          <div className="form__input-container">
+            <TextField
+              name="username"
+              className="form__input"
+              label="Username"
+              variant="standard"
+              autoComplete="off"
+              onChange={onChangeData}
+              value={loginData.username}
+            />
+            <TextField
+              name="password"
+              className="form__input"
+              label="Password"
+              variant="standard"
+              type="password"
+              autoComplete="off"
+              onChange={onChangeData}
+              value={loginData.password}
+            />
+          </div>
+          <Button variant="contained" type="submit" disabled={hasEmptyFields}>
+            Login
+          </Button>
+        </FormStyled>
+      </>
     );
   } else {
     return (
-      <>
-        <span className="form__heading">Logged as {userState.username}</span>
-        <Button variant="text" type="submit" onClick={onLogOut}>
+      <LoginContainerStyled className="logged-container">
+        <span className="logged-container__text">
+          Logged as <strong>{userState.username}</strong>
+        </span>
+        <Button
+          className="logged-container__button"
+          variant="outlined"
+          type="submit"
+          onClick={onLogOut}
+        >
           Logout
         </Button>
-      </>
+      </LoginContainerStyled>
     );
   }
 };
