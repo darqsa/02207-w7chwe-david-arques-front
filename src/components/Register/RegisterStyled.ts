@@ -8,7 +8,7 @@ const FormStyled = styled.form`
   padding: 40px 20px;
   gap: 15px;
   border-radius: 20px;
-  height: 100%;
+  height: 300px;
   .form {
     &__heading {
       margin: 0;

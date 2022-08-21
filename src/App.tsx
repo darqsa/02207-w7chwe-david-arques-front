@@ -1,4 +1,3 @@
-import Register from "./components/Register/Register";
 import UserList from "./components/UserList/UsersList";
 import "./App.css";
 import { useDispatch } from "react-redux";
@@ -25,7 +24,6 @@ function App() {
       <main className="app-container">
         <div>
           <Login />
-          <Register />
         </div>
         <UserList />
       </main>

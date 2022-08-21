@@ -3,6 +3,7 @@ import { SyntheticEvent, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import useApi from "../../users/hooks/useApi";
+import Register from "../Register/Register";
 
 const Login = (): JSX.Element => {
   const initialState = {
@@ -10,6 +11,7 @@ const Login = (): JSX.Element => {
     password: "",
     token: "",
   };
+  let isUserLogged = false;
 
   const { loginUser, logoutUser } = useApi();
 
@@ -19,13 +21,10 @@ const Login = (): JSX.Element => {
 
   const onSubmitData = async (event: SyntheticEvent) => {
     event.preventDefault();
-    try {
-      loginUser(loginData);
-    } catch (error) {
-      console.log(error);
-    }
-
     setLoginData(initialState);
+
+    isUserLogged = !isUserLogged;
+    loginUser(loginData);
   };
 
   const onLogOut = () => {
@@ -33,7 +32,7 @@ const Login = (): JSX.Element => {
   };
 
   const onChangeData = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setLoginData({ ...loginData, [event.target.id]: event.target.value });
+    setLoginData({ ...loginData, [event.target.name]: event.target.value });
   };
 
   const hasEmptyFields =
@@ -41,31 +40,34 @@ const Login = (): JSX.Element => {
 
   if (!userState.id) {
     return (
-      <form onSubmit={onSubmitData} className="form">
-        <h2 className="form__heading">Login:</h2>
-        <TextField
-          id="username"
-          className="form__input"
-          label="Username"
-          variant="standard"
-          autoComplete="off"
-          onChange={onChangeData}
-          value={loginData.username}
-        />
-        <TextField
-          id="password"
-          className="form__input"
-          label="Password"
-          variant="standard"
-          type="password"
-          autoComplete="off"
-          onChange={onChangeData}
-          value={loginData.password}
-        />
-        <Button variant="text" type="submit" disabled={hasEmptyFields}>
-          Login
-        </Button>
-      </form>
+      <>
+        {!isUserLogged && <Register />}
+        <form onSubmit={onSubmitData} className="form">
+          <h2 className="form__heading">Login:</h2>
+          <TextField
+            name="username"
+            className="form__input"
+            label="Username"
+            variant="standard"
+            autoComplete="off"
+            onChange={onChangeData}
+            value={loginData.username}
+          />
+          <TextField
+            name="password"
+            className="form__input"
+            label="Password"
+            variant="standard"
+            type="password"
+            autoComplete="off"
+            onChange={onChangeData}
+            value={loginData.password}
+          />
+          <Button variant="text" type="submit" disabled={hasEmptyFields}>
+            Login
+          </Button>
+        </form>
+      </>
     );
   } else {
     return (

@@ -26,7 +26,7 @@ const Register = (): JSX.Element => {
   };
 
   const onChangeData = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [event.target.id]: event.target.value });
+    setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
   const hasEmptyFields =
@@ -35,7 +35,7 @@ const Register = (): JSX.Element => {
     <FormStyled onSubmit={onSubmitData} className="form">
       <h2 className="form__heading">Create your account:</h2>
       <TextField
-        id="username"
+        name="username"
         className="form__input"
         label="Username"
         variant="outlined"
@@ -46,7 +46,7 @@ const Register = (): JSX.Element => {
         value={formData.username}
       />
       <TextField
-        id="password"
+        name="password"
         className="form__input"
         label="Password"
         variant="outlined"
