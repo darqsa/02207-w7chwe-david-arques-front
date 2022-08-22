@@ -1,11 +1,11 @@
 import UserList from "./components/UserList/UsersList";
-import "./App.css";
 import { useDispatch } from "react-redux";
 import { fetchToken } from "./utils/auth";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { User } from "./users/models/User";
 import { loginUserActionCreator } from "./users/slices/loginUserSlice";
 import Login from "./components/Login/Login";
+import { MainAppContainerStyled } from "./AppStyled";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -21,12 +21,12 @@ function App() {
       <header>
         <h1 className="app-header">Tinder🔥</h1>
       </header>
-      <main className="app-container">
+      <MainAppContainerStyled className="app-container">
         <div>
           <Login />
         </div>
         <UserList />
-      </main>
+      </MainAppContainerStyled>
     </>
   );
 }
