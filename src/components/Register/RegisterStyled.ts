@@ -9,6 +9,9 @@ const FormStyled = styled.form`
   gap: 15px;
   border-radius: 20px;
   height: 300px;
+  @media (max-width: 600px) {
+    width: 85%;
+  }
   .form {
     &__heading {
       margin: 0;

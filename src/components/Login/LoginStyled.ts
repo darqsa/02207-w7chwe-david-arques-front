@@ -35,6 +35,9 @@ const LoginContainerStyled = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
   align-items: flex-start;
+  @media (max-width: 600px) {
+    width: 85%;
+  }
   .logged-container {
     &__text {
       font-size: 1.4em;
